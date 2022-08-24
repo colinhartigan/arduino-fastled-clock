@@ -9,7 +9,7 @@
 #define LED_TYPE WS2812B
 #define COLOR_ORDER GRB
 #define NUM_LEDS 58
-#define BRIGHTNESS 50
+#define BRIGHTNESS 75
 CRGB leds[NUM_LEDS];
 DS3232RTC myRTC(false);
 tmElements_t tm;
@@ -192,7 +192,7 @@ void loop() {
 
   //night time sensing
   if (nightMode == true) {
-    FastLED.setBrightness(3);
+    FastLED.setBrightness(2);
     if (random8() < 50) {
       Serial.println(1);
       darkEnabled = true;
