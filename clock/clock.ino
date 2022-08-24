@@ -271,13 +271,14 @@ void loop() {
   RTC.read(tm);
   int timeHour;
 
-  if (tm.Hour > 12) {
-    timeHour = tm.Hour - 12;
-  } else {
-    timeHour = tm.Hour;
-  }
+//  if (tm.Hour > 12) {
+//    timeHour = tm.Hour - 12;
+//  } else {
+//    timeHour = tm.Hour;
+//  }
+  timeHour = tm.Hour;
 
-  if (tm.Hour > 24 || tm.Hour < 6) {
+  if (tm.Hour >= 23 || tm.Hour < 6) {
     nightMode = true;
   } else {
     nightMode = false;
@@ -323,11 +324,18 @@ void loop() {
     rainbowEnabled = true;
     int tensDigit = 37;
 
-    if (tensHour != 0) {
-      tensDigit = tensHour;
-    } else {
+//    if (tensHour != 0) {
+//      tensDigit = tensHour;
+//    } else {
+//      tensDigit = 37;
+//    }
+
+    if(tensHour == 0){
       tensDigit = 37;
+    } else {
+      tensDigit = tensHour;
     }
+
     drawDigit(d1, clockColors[clockColor][0], tensDigit);
     drawDigit(d2, clockColors[clockColor][1], onesHour);
     drawDigit(d3, clockColors[clockColor][2], tensMin);
